@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./jquery-3.4.1.slim.min.js"></script>
+    <title>
+        SISE Space Ship Invaiders
+    </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="https://ih1.redbubble.net/image.2494125157.4697/st,small,507x507-pad,600x600,f8f8f8.jpg" sizes="16x16">
+    <meta name="viewport" content="width=1366, height=768">
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1> Starship Invaders</h1>
+        <!--<img src=https://ih1.redbubble.net/image.2494125157.4697/st,small,507x507-pad,600x600,f8f8f8.jpg width=50 height=50 /-->
+    </header>
+    <div id="menu">
+        <ul class="nav">
+            <li>
+                <button onclick="switchPage('welcome')">
+                    Welcome
+                </button>
+            </li>
+            <li>
+                <button onclick="switchPage('signin_screen')">
+                    signIn
+                </button>
+            </li>
+            <li>
+                <button id="myBtn">About</button>
+            </li>
+            <li>
+                <button onclick="switchPage('login_screen')">
+                    logIn
+                </button>
+            </li>
+
+        </ul>
+
+
+    </div>
+    <div id="content">
+        <div class="screen" id="welcome_scr">
+            <h2>
+                Welcome to our Starship Invaders Game!
+                Rahaf Sbaih: 209092196
+                Jan Zaatra: 211637202 
+            </h2>
+            <p>
+                In order start the game you need to log in:
+            </p>
+            <br>
+            <button onclick="switchScreens('login_scr')">
+                Log in
+            </button>
+            <br>
+            <p>
+                Don't have an account yet? Sign in here:
+            </p>
+            <br>
+            <button onclick="switchScreens('signin_scr')">
+                Sign in
+            </button>
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
