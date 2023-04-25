@@ -1,0 +1,53 @@
+header {
+    height: 50px;
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+}
+body {
+    background-image: url("https://i.gifer.com/68g.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    font-family: 'Alkatra', cursive;
+   
+}
+nav {
+    background: #352e2e;
+    height: 80px;
+    width: 100%;
+}
+nav li {
+    display: inline-block;
+    line-height: 80px;
+       
+}
+button {
+    width: 80px;
+    height: 28px;
+    border-radius: 15px;
+    border: none;
+    color: #f3f0f0;
+    padding: 7px 13px;
+    font-family: 'Alkatra', cursive;
+    text-align: center;
+    background:#000000;
+}
+
+
+
+    button.active, button:hover {
+        background: #494646;
+        transition: .5s;
+    }
+
+h1{
+    color:white;
+    background: #000000;
+    font-size: 20px;
+}
+    
