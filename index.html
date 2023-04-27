@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="images/spaceship_logo.png" sizes="16x16">
     <meta name="viewport" content="width=1366, height=768">
-    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="siginn.js" type="text/javascript"></script>
 </head>
 
@@ -22,7 +22,7 @@
             <nav>
                 <ul>
                     <li>
-                        <button onclick="switchPage('welcome')">Home</button>
+                        <button onclick="welcome_screen()">Home</button>
                     </li>
                     <li>
                         <button id="aboutbtn">About</button>
@@ -34,10 +34,10 @@
                         </div>
                     </li>
                     <li>
-                        <button id="loginBtn">logIn</button>
+                        <button id="loginBtn" onclick="login_screen()">logIn</button>
                     </li>
                     <li>
-                        <button onclick="switchPage('signUp_screen')">signUp</button>
+                        <button onclick="signup_scr()">signUp</button>
                     </li>
                 </ul>
             </nav>
@@ -48,36 +48,20 @@
         <br />
         <div class="screen" id="welcome_scr">
             <h2>
-                Welcome to our Starship Invaders Game!
-                <p>
+                Welcome to our Space Invaders Game!<br/>
+              
                     Rahaf Sbaih: 209092196 &
                     Jan Zaatra: 211637202
 
-                </p>
-
             </h2>
+            <br/>
             <p>
                 In order start the game you need to log in:
             </p>
             <br />
-            <button id="log">
+            <button id="log" onclick="login_screen()">
                 Log in
             </button>
-            <div id="loginPage" style="display: none;">
-                <div id="loginBox">
-                    <form id="logForm">
-                        <div class="form-group">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <button type="submit" id="submitbtn">Log In</button>
-                    </form>
-                </div>
-            </div>
             <br />
             <br />
             <br />
@@ -85,10 +69,47 @@
                 Don't have an account yet? Sign in here:
             </p>
             <br>
-            <button id="sign" onclick="switchScreens('signin_scr')">
+            <button id="sign" onclick="signup_scr()">
                 Sign in
             </button>
+        </div>
+        <div class="screen" id="login_scr" style="display:none;">
+            <div id="loginBox">
+                <form id="logForm">
+                    <div class="form-group">
+                        <label for="username">Username : </label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password : </label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" id="submitbtn">Log In</button>
+                </form>
+            </div>
+        </div>
+        <div class="screen" id="signup_scr" style="display:none;">
+            <form id="signForm">
+                <label for="name">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+                <label for="name">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required><br />
+                <label for="username">Usename:</label>
+                <input type="text" id="usersign" name="name" required><br />
+                <label for="password">Password:</label>
+                <input type="password" id="initialPass" name="password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirmPass" name="confirmpassword" required><br>
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birth" name="birthday" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+                <button type="submit" id="submitsign">Submit</button>
+            </form>
 
+        </div>
+        <div class="screen" id="game_scr" style="display:none;">
+            <p>Welcome to the game!</p>
         </div>
 
 
@@ -96,3 +117,4 @@
 
 </body>
 </html>
+
