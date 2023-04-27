@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function welcome() {
     document.getElementById("login_scr").style.display = "none";
     document.getElementById("game_scr").style.display = "none";
+    document.getElementById("config_scr").style.display = "none";
     document.getElementById("welcome_scr").style.display = "block";
 
 }
@@ -58,6 +59,7 @@ function login_screen() {
     document.getElementById("welcome_scr").style.display = "none";
     document.getElementById("game_scr").style.display = "none";
     document.getElementById("signup_scr").style.display = "none";
+    document.getElementById("config_scr").style.display = "none";
     document.getElementById("login_scr").style.display = "block";
     document.getElementById("loginBox").style.display = "block";
     document.getElementById("logForm").style.display = "block";
@@ -68,6 +70,7 @@ function welcome_screen() {
     document.getElementById("login_scr").style.display = "none";
     document.getElementById("game_scr").style.display = "none";
     document.getElementById("signup_scr").style.display = "none";
+    document.getElementById("config_scr").style.display = "none";
     document.getElementById("welcome_scr").style.display = "block";
 }
 
@@ -77,6 +80,7 @@ function signup_scr(){
     document.getElementById("login_scr").style.display = "none";
     document.getElementById("game_scr").style.display = "none";
     document.getElementById("welcome_scr").style.display = "none";
+    document.getElementById("config_scr").style.display = "none";
     document.getElementById("signup_scr").style.display = "block";
 }
 
@@ -98,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("login_scr").style.display = "none";
             document.getElementById("welcome_scr").style.display = "none";
             document.getElementById("signup_scr").style.display = "none";
-            document.getElementById("game_scr").style.display = "block";
+            document.getElementById("config_scr").style.display = "block";
         } else {
             alert('There is no such user try again!');
         }
@@ -127,6 +131,11 @@ function isPasswordValid(pass) {
   return must.test(pass);
 }
 
+function isMailValid(mail) {
+    let email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;;
+    return email.test(mail);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const first = document.querySelector('#firstname');
     const last = document.querySelector('#lastname');
@@ -144,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const to_check_intial = initial.value;
         const to_check_confirm = confirm.value;
         const to_check_bday = Date(bday.value);
+        const to_check_mail = mail.value;
         if (!isNameValid(to_ckeck_first)) {
             event.preventDefault();
             alert('First Name consists only letters a-z!');
@@ -169,6 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             alert('You must be older than 3 years old!');
             bday.value = '';
+        } else if (!isMailValid(to_check_mail)) {
+            event.preventDefault();
+            alert('Incorrect E-mail address ');
+            mail.value = '';
         } else {
             let toAdd = {
                 username: username.value,

@@ -48,13 +48,13 @@
         <br />
         <div class="screen" id="welcome_scr">
             <h2>
-                Welcome to our Space Invaders Game!<br/>
-              
-                    Rahaf Sbaih: 209092196 &
-                    Jan Zaatra: 211637202
+                Welcome to our Space Invaders Game!<br />
+
+                Rahaf Sbaih: 209092196 &
+                Jan Zaatra: 211637202
 
             </h2>
-            <br/>
+            <br />
             <p>
                 In order start the game you need to log in:
             </p>
@@ -90,15 +90,15 @@
         </div>
         <div class="screen" id="signup_scr" style="display:none;">
             <form id="signForm">
-                <label for="name">First Name:</label>
+                <label for="firstname">First Name:</label>
                 <input type="text" id="firstname" name="firstname" required>
-                <label for="name">Last Name:</label>
+                <label for="lastname">Last Name:</label>
                 <input type="text" id="lastname" name="lastname" required><br />
                 <label for="username">Usename:</label>
-                <input type="text" id="usersign" name="name" required><br />
+                <input type="text" id="usersign" name="username" required><br />
                 <label for="password">Password:</label>
                 <input type="password" id="initialPass" name="password" required>
-                <label for="confirm-password">Confirm Password:</label>
+                <label for="confirmpassword">Confirm Password:</label>
                 <input type="password" id="confirmPass" name="confirmpassword" required><br>
                 <label for="birthday">Birthday:</label>
                 <input type="date" id="birth" name="birthday" required>
@@ -110,6 +110,16 @@
         </div>
         <div class="screen" id="game_scr" style="display:none;">
             <p>Welcome to the game!</p>
+        </div>
+        <div class="screen" id="config_scr" style="display:none;">
+            <br/>
+            <form id="configForm">
+                <label for="shoot" id="configsl"> Pick a key (A-Z) OR space to shoot at your enemies:</label><br />
+                <input type="text" id="shoot" name="shoot" required /><br/>
+                <label for="timer" id="configsl"> Prefrenced Timer(at least 2 min):</label><br />
+                <input type="number" id="timer" name="timer" min="2" step="0.5" value="2" required /><br/>
+                <button type="submit" id="start"> Start!</button>
+            </form>
         </div>
 
 
