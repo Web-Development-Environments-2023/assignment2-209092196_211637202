@@ -183,3 +183,7 @@ label {
     font-family: 'Bangers', cursive;
     font-size: x-large;
 }
+#gameCanvas {
+    position: absolute;
+
+}

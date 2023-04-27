@@ -5,9 +5,13 @@ var database = [
     },
    
 ];
-
-var roundTime = 2;
+var roundTime;
 var shooyingKey;
+var triesLeft = 3
+var score = 0;
+var canv;
+var ctx;
+
 document.addEventListener("DOMContentLoaded", function () {
     var about = document.getElementById("aboutbtn");
     var modalDialog = document.getElementById("modalid");
@@ -96,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const username = user.value;
         const password = pass.value;
         let bool = loginFun(username, password)
-        user.value = '';
-        pass.value = '';
         if (bool) {
             document.getElementById("logForm").style.display = "none";
             document.getElementById("loginBox").style.display = "none";
@@ -106,7 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("signup_scr").style.display = "none";
             document.getElementById("game_scr").style.display = "none";
             document.getElementById("config_scr").style.display = "block";
+            user.value = '';
+            pass.value = '';
         } else {
+            user.value = '';
+            pass.value = '';
             alert('There is no such user try again!');
         }
 
@@ -200,10 +206,26 @@ document.addEventListener('DOMContentLoaded', function () {
             bday.value = '';
             mail.value = '';
         }
-        
-        
+
+
     });
 });
+
+function startGame(time,shootKey) {
+    canv = document.getElementById('gameCanvas');
+    ctx = canv.getContext('2d');
+    canv.height = window.innerHeight;
+    canv.width = window.innerWidth;
+    const space = new Image();
+    space.src = 'images/canvasec.jpg';
+    space.onload = function () {
+        ctx.drawImage(space, 0, 0, canv.width, canv.height);
+    };
+    roundTime = time * 60;
+    setInterval(update, 1000);
+    
+    
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const shooter = document.querySelector('#shoot');
@@ -220,6 +242,30 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("signup_scr").style.display = "none";
         document.getElementById("config_scr").style.display = "none";
         document.getElementById("game_scr").style.display = "block";
+        startGame(roundTime, shooyingKey);
 
     });
 });
+
+
+
+
+function updateScore() {
+    ctx.font = "30px Bangers";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("Score: " + score, 10, 30);
+}
+
+function updateTime() {
+    ctx.font = "30px Bangers";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("Time: " + roundTime, 10,100);
+}
+
+function update() {
+   
+    updateScore();
+    updateTime();
+}
+
+
