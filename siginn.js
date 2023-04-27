@@ -6,6 +6,8 @@ var database = [
    
 ];
 
+var roundTime = 2;
+var shooyingKey;
 document.addEventListener("DOMContentLoaded", function () {
     var about = document.getElementById("aboutbtn");
     var modalDialog = document.getElementById("modalid");
@@ -102,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("login_scr").style.display = "none";
             document.getElementById("welcome_scr").style.display = "none";
             document.getElementById("signup_scr").style.display = "none";
+            document.getElementById("game_scr").style.display = "none";
             document.getElementById("config_scr").style.display = "block";
         } else {
             alert('There is no such user try again!');
@@ -199,5 +202,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const shooter = document.querySelector('#shoot');
+    const round = document.querySelector('#timer');
+    const startBtn = document.querySelector('#start');
+    startBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        roundTime = round.value;
+        shooyingKey = shooter.value;
+        document.getElementById("welcome_scr").style.display = "none";
+        document.getElementById("logForm").style.display = "none";
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("login_scr").style.display = "none";
+        document.getElementById("signup_scr").style.display = "none";
+        document.getElementById("config_scr").style.display = "none";
+        document.getElementById("game_scr").style.display = "block";
+
     });
 });
