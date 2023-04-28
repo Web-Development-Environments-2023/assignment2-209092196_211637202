@@ -130,9 +130,9 @@ function isNameValid(name) {
 function isBdayValid(date) {
     let now = new Date();
     if (now - date > 3) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 function isPasswordValid(pass) {
@@ -163,7 +163,7 @@ if (document.getElementById("signup_scr")) {
             const to_check_username = username.value;
             const to_check_intial = initial.value;
             const to_check_confirm = confirm.value;
-            const to_check_bday = Date(bday.value);
+            const to_check_bday = new Date(bday.value);
             const to_check_mail = mail.value;
             if (!isNameValid(to_ckeck_first)) {
                 event.preventDefault();
