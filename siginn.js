@@ -208,7 +208,10 @@ if (document.getElementById("signup_scr")) {
                 confirm.value = '';
                 bday.value = '';
                 mail.value = '';
-            }
+                alert("Successfuly added!");
+                document.getElementById("signup_scr").style.display = "none";
+                document.getElementById("welcome_scr").style.display = "block";
+            } 
 
 
         });
