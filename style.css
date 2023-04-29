@@ -55,14 +55,14 @@ nav button {
     font-family: 'Bangers', cursive;
 }
 
-nav button:hover {
-    transform: translateY(-3px);
-}
+    nav button:hover {
+        transform: translateY(-3px);
+    }
 
 h2 {
     color: white;
-    font-size:xx-large;
-    font-weight:500;
+    font-size: xx-large;
+    font-weight: 500;
 }
 
 
@@ -88,6 +88,7 @@ p {
     cursor: pointer;
     font-family: 'Bangers', cursive;
 }
+
 #log {
     width: 100px;
     height: 50px;
@@ -100,14 +101,14 @@ p {
 }
 
 #modalid {
-    display: none; 
-    position: fixed; 
+    display: none;
+    position: fixed;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.3); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 #modalcontent {
@@ -129,11 +130,12 @@ p {
     font-weight: bolder;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    cursor: pointer;
-}
+    .close:hover,
+    .close:focus {
+        color: black;
+        cursor: pointer;
+    }
+
 #logForm {
     display: none;
     flex-direction: column;
@@ -142,9 +144,11 @@ p {
     background-color: rgba(0, 0, 0, 0.3);
     font-family: 'Bangers', cursive;
 }
+
 #signForm {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
 input {
     margin-bottom: 100px;
     background-color: transparent;
@@ -154,15 +158,17 @@ input {
     font-size: large;
     font-family: 'Bangers', cursive;
 }
-input:focus {
-    background-color: #051c3c;
-    
-}
+
+    input:focus {
+        background-color: #051c3c;
+    }
+
 label {
     color: #ffd300;
     font-size: x-large;
     font-family: 'Bangers', cursive;
 }
+
 #submitbtn {
     width: 100px;
     height: 50px;
@@ -183,7 +189,7 @@ label {
     font-family: 'Bangers', cursive;
     font-size: x-large;
 }
+
 #gameCanvas {
     position: absolute;
-
 }
