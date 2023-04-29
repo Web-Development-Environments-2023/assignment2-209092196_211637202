@@ -14,8 +14,27 @@ var ctx;
 var isLoadedsign = false;
 var isLoadedUp = false;
 var isConfig = false;
-// 1-config, 2-login
-
+var player;
+var space = new Image();
+space.src = 'images/canvasec.jpg';
+var missles = [];
+const keys = {
+    ArrowUp: {
+        pressed: false
+    },
+    ArrowDown: {
+        pressed: false
+    },
+    ArrowRight: {
+        pressed: false
+    },
+    ArrowLeft: {
+        pressed: false
+    },
+    shooyingKey: {
+        pressed: false
+    }
+}
 function about() {
     var modalDialog = document.getElementById("modalid");
     var closebtn = document.getElementsByClassName("close")[0];
@@ -205,9 +224,93 @@ function startGame(time, shootKey) {
     space.onload = function () {
         ctx.drawImage(space, 0, 0, canv.width, canv.height);
     }
-    const player = new Invader();
+    player = new Invader();
     player.draw();
+    window.addEventListener('keydown', ({ key }) => {
+        switch (key) {
+            case 'ArrowUp':
+                if (player.point.y - 5 > 0.4 * canv.height ) {
+                    player.point.y = player.point.y - 5;
+                    keys.ArrowUp.pressed = true;
+                }
+                break;
+            case 'ArrowDown':
+                if (player.point.y + 5 <  canv.height ) {
+                    player.point.y = player.point.y + 5;
+                    keys.ArrowDown.pressed = true;
+                }
+                break;
+            case 'ArrowRight':
+                if (player.point.x + 5 < canv.width ) {
+                    player.point.x = player.point.x + 5;
+                    keys.ArrowRight.pressed = true;
+                }
+                break;
+            case 'ArrowLeft':
+                if (player.point.x > 5) {
+                    player.point.x = player.point.x - 5;
+                    keys.ArrowLeft.pressed = true;
+                }
+                break;
+            case shooyingKey:
+                let m1 = new Missle({
+                    point: {
+                        x: player.point.x + player.width/2,
+                        y: player.point.y
+                    },
+                    speed: {
+                        x: 0,
+                        y: -5
+                    }
+                });
+                missles.push(m1);
+        }
+            
 
+
+    });
+    window.addEventListener('keyup', ({ key }) => {
+        switch (key) {
+            case 'ArrowUp':
+                if (player.point.y - 5 > 0.4 * canv.height) {
+                    player.point.y = player.point.y - 5;
+                    keys.ArrowUp.pressed = false;
+                }             
+                break;
+            case 'ArrowDown':
+                if (player.point.y + 5 <  canv.height) {
+                    player.point.y = player.point.y + 5;
+                    keys.ArrowDown.pressed = false;
+                }
+                break;
+            case 'ArrowRight':
+                if (player.point.x + 5 < canv.width) {
+                    player.point.x = player.point.x + 5;
+                    keys.ArrowRight.pressed = false;
+                }
+                break;
+            case 'ArrowLeft':
+                if (player.point.x > 5) {
+                    player.point.x = player.point.x - 5;
+                    keys.ArrowLeft.pressed = false;
+                }
+                break;
+        }
+
+
+
+    });
+
+    animate()
+
+}
+function animate() {
+    requestAnimationFrame(animate)
+    ctx.drawImage(space, 0, 0, canv.width, canv.height);
+    player.draw();
+    missles.forEach(missle => {
+        missle.update();
+    });
 
 }
 
@@ -215,28 +318,45 @@ function drawEnemy() {
     ctx.drawImage(space, 0, 0, canv.width, canv.height);
 }
 
+
 class Invader {
     constructor() {
+
         this.point = {
             x: 500,
-            y:500
-
-        }
-        this.speed = {
-            x: 0,
-            y:0
-        }
-        const platerimg = new Image();
-        platerimg.src = 'images/player.jpg';
-        this.platerimg = platerimg;
-        
-        this.width = 80;
-        this.height = 80;
+            y: 600
+        };
+        this.platerimg = new Image();
+        this.platerimg.src = 'images/player.jpg';
+        this.loaded = new Promise(resolve => {
+            this.platerimg.onload = () => {
+                this.width = this.platerimg.width * 0.1;
+                this.height = this.platerimg.height * 0.1;
+                resolve();
+            };
+        });
     }
-    draw() {
-        this.platerimg.onload = function () {
-            ctx.drawImage(this.platerimg, this.point.x, this.point.y);
-        }
-        
+
+    async draw() {
+        await this.loaded;
+        ctx.drawImage(this.platerimg, this.point.x, this.point.y, this.width, this.height);
+    }
+
+}
+class Missle {
+    constructor({ point, speed}) {
+        this.point = point;
+        this.speed = speed;
+        this.raduis = 4;
+    }
+    
+    update() {
+        ctx.beginPath();
+        ctx.arc(this.point.x, this.point.y, this.raduis, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+        this.point.x = this.point.x + this.speed.x;
+        this.point.y = this.point.y + this.speed.y;
     }
 }
