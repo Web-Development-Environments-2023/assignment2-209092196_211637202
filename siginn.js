@@ -229,26 +229,26 @@ function startGame(time, shootKey) {
     window.addEventListener('keydown', ({ key }) => {
         switch (key) {
             case 'ArrowUp':
-                if (player.point.y - 5 > 0.4 * canv.height ) {
-                    player.point.y = player.point.y - 5;
+                if (player.point.y - 10 > 0.4 * canv.height ) {
+                    player.point.y = player.point.y - 10;
                     keys.ArrowUp.pressed = true;
                 }
                 break;
             case 'ArrowDown':
-                if (player.point.y + 5 <  canv.height ) {
-                    player.point.y = player.point.y + 5;
+                if (player.point.y + 10 <  canv.height ) {
+                    player.point.y = player.point.y + 10;
                     keys.ArrowDown.pressed = true;
                 }
                 break;
             case 'ArrowRight':
-                if (player.point.x + 5 < canv.width ) {
-                    player.point.x = player.point.x + 5;
+                if (player.point.x + 10 < canv.width ) {
+                    player.point.x = player.point.x + 10;
                     keys.ArrowRight.pressed = true;
                 }
                 break;
             case 'ArrowLeft':
-                if (player.point.x > 5) {
-                    player.point.x = player.point.x - 5;
+                if (player.point.x > 10) {
+                    player.point.x = player.point.x - 10;
                     keys.ArrowLeft.pressed = true;
                 }
                 break;
@@ -260,7 +260,7 @@ function startGame(time, shootKey) {
                     },
                     speed: {
                         x: 0,
-                        y: -5
+                        y: -10
                     }
                 });
                 missles.push(m1);
@@ -272,26 +272,26 @@ function startGame(time, shootKey) {
     window.addEventListener('keyup', ({ key }) => {
         switch (key) {
             case 'ArrowUp':
-                if (player.point.y - 5 > 0.4 * canv.height) {
-                    player.point.y = player.point.y - 5;
+                if (player.point.y - 10 > 0.4 * canv.height) {
+                    player.point.y = player.point.y - 10;
                     keys.ArrowUp.pressed = false;
                 }             
                 break;
             case 'ArrowDown':
-                if (player.point.y + 5 <  canv.height) {
-                    player.point.y = player.point.y + 5;
+                if (player.point.y + 10 <  canv.height) {
+                    player.point.y = player.point.y + 10;
                     keys.ArrowDown.pressed = false;
                 }
                 break;
             case 'ArrowRight':
-                if (player.point.x + 5 < canv.width) {
-                    player.point.x = player.point.x + 5;
+                if (player.point.x + 10 < canv.width) {
+                    player.point.x = player.point.x + 10;
                     keys.ArrowRight.pressed = false;
                 }
                 break;
             case 'ArrowLeft':
-                if (player.point.x > 5) {
-                    player.point.x = player.point.x - 5;
+                if (player.point.x > 10) {
+                    player.point.x = player.point.x - 10;
                     keys.ArrowLeft.pressed = false;
                 }
                 break;
@@ -347,7 +347,7 @@ class Missle {
     constructor({ point, speed}) {
         this.point = point;
         this.speed = speed;
-        this.raduis = 4;
+        this.raduis = 10;
     }
     
     update() {
