@@ -193,9 +193,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 function startGame(time, shootKey) {
-    var background = new Audio('sounds/spaceinvaders1.mpeg');
-    background.loop = true;
-    background.play();
+    //var background = new Audio('sounds/spaceinvaders1.mpeg');
+    //background.loop = true;
+    //background.play();
     canv = document.getElementById('gameCanvas');
     ctx = canv.getContext('2d');
     canv.height = window.innerHeight;
@@ -204,7 +204,39 @@ function startGame(time, shootKey) {
     space.src = 'images/canvasec.jpg';
     space.onload = function () {
         ctx.drawImage(space, 0, 0, canv.width, canv.height);
-    };
+    }
+    const player = new Invader();
+    player.draw();
 
 
+}
+
+function drawEnemy() {
+    ctx.drawImage(space, 0, 0, canv.width, canv.height);
+}
+
+class Invader {
+    constructor() {
+        this.point = {
+            x: 500,
+            y:500
+
+        }
+        this.speed = {
+            x: 0,
+            y:0
+        }
+        const platerimg = new Image();
+        platerimg.src = 'images/player.jpg';
+        this.platerimg = platerimg;
+        
+        this.width = 80;
+        this.height = 80;
+    }
+    draw() {
+        this.platerimg.onload = function () {
+            ctx.drawImage(this.platerimg, this.point.x, this.point.y);
+        }
+        
+    }
 }
