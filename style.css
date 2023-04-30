@@ -1,214 +1,214 @@
 body {
-    margin: 0;
-    background-image: url("images/space_invaders_background.jpeg");
-    background-size: cover;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Bangers', cursive;
+  margin: 0;
+  background-image: url('images/space_invaders_background.jpeg');
+  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Bangers', cursive;
 }
 /* Set the background color and height of the header */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: #333;
-    height: 20px;
-    text-align: left;
-    padding: 10px;
-    width: 100%;
-    font-family: 'Bangers', cursive;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #333;
+  height: 20px;
+  text-align: left;
+  padding: 10px;
+  width: 100%;
+  font-family: 'Bangers', cursive;
 }
 
 /* Center the menu within the header */
 #menu {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /* Style the navigation links */
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-
 nav li {
-    display: flex;
-    margin: 0 130px;
+  display: flex;
+  margin: 0 130px;
 }
 
 nav button {
-    background-color: transparent;
-    border: none;
-    color: #ffd300;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Bangers', cursive;
+  background-color: transparent;
+  border: none;
+  color: #ffd300;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Bangers', cursive;
 }
 
-    nav button:hover {
-        transform: translateY(-3px);
-    }
+nav button:hover {
+  transform: translateY(-3px);
+}
 
 h2 {
-    color: white;
-    font-size: xx-large;
-    font-weight: 500;
+  color: white;
+  font-size: xx-large;
+  font-weight: 500;
 }
 
-
 #welcome_scr {
-    color: black;
-    font-weight: 900;
-    font-family: 'Bangers', cursive;
+  color: black;
+  font-weight: 900;
+  font-family: 'Bangers', cursive;
 }
 
 p {
-    color: black;
-    font-weight: bold;
-    font-size: x-large;
+  color: black;
+  font-weight: bold;
+  font-size: x-large;
 }
 
 #sign {
-    width: 100px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffd300;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: 'Bangers', cursive;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #ffd300;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
 }
 
 #log {
-    width: 100px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffd300;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: 'Bangers', cursive;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #ffd300;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
+}
+/**/
+.modal {
+  color: white;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-
-#modalid {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.3);
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+  border: 10px solid #0e4ca3;
+  width: 60%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.853);
+  color: white;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
 }
-
-#modalcontent {
-    margin: 15% auto;
-    padding: 20px;
-    border: 10px solid #0e4ca3;
-    width: 60%;
-    height: 50%;
-    background-color: rgba(0, 0, 0, 0.853);
-    color: white;
-    font-weight: bold;
-    font-family: 'Bangers', cursive;
-}
-
 
 .close {
-    color: #ffd300;
-    float: right;
-    font-size: 35px;
-    font-weight: bolder;
+  color: #ffd300;
+  float: right;
+  font-size: 35px;
+  font-weight: bolder;
 }
 
-    .close:hover,
-    .close:focus {
-        color: black;
-        cursor: pointer;
-    }
+.close:hover,
+.close:focus {
+  color: black;
+  cursor: pointer;
+}
 
 #logForm {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 150px;
-    background-color: rgba(0, 0, 0, 0.3);
-    font-family: 'Bangers', cursive;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-family: 'Bangers', cursive;
 }
 
 #signForm {
-    background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 input {
-    margin-bottom: 100px;
-    background-color: transparent;
-    color: #ffd300;
-    height: 30px;
-    border-radius: 15px;
-    font-size: large;
-    font-family: 'Bangers', cursive;
+  margin-bottom: 100px;
+  background-color: transparent;
+  color: #ffd300;
+  height: 30px;
+  border-radius: 15px;
+  font-size: large;
+  font-family: 'Bangers', cursive;
 }
 
-    input:focus {
-        background-color: #051c3c;
-    }
+input:focus {
+  background-color: #051c3c;
+}
 
 label {
-    color: #ffd300;
-    font-size: x-large;
-    font-family: 'Bangers', cursive;
+  color: #ffd300;
+  font-size: x-large;
+  font-family: 'Bangers', cursive;
 }
 
 #submitbtn {
-    width: 100px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffd300;
-    font-size: larger;
-    cursor: pointer;
-    font-family: 'Bangers', cursive;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #ffd300;
+  font-size: larger;
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
 }
 
-
-#submitsign, #start {
-    color: #ffd300;
-    width: 100px;
-    height: 50px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Bangers', cursive;
-    font-size: x-large;
+#submitsign,
+#start {
+  color: #ffd300;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
+  font-size: x-large;
 }
 
 #gameCanvas {
-    position: absolute;
+  position: absolute;
 }
 #new_game {
-    background-image: linear-gradient(to bottom, #4286f4, #2b5dd1);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-image: linear-gradient(to bottom, #4286f4, #2b5dd1);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-    #new_game:hover {
-        background-image: linear-gradient(to bottom, #2b5dd1, #4286f4);
-    }
+#new_game:hover {
+  background-image: linear-gradient(to bottom, #2b5dd1, #4286f4);
+}
+#tablescore {
+  background-color: gray;
+  color: white;
+}
