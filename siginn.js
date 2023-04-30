@@ -316,7 +316,7 @@ function animate() {
 
     });
     aliensGrid.forEach((grid) => {
-        grid.update()
+        grid.update();
         grid.aliens.forEach(ali => {
             ali.update({ speed: grid.speed });
         })
@@ -396,9 +396,13 @@ class Alien {
     }
 
     update({ speed }) {
-        this.x += speed.x;
-        this.y += speed.y;
-        ctx.drawImage(this.platerimg, this.point.x, this.point.y, this.width, this.height);
+        if (this.platerimg) {
+            ctx.drawImage(this.platerimg, this.point.x, this.point.y, this.width, this.height);
+            this.point.x = this.point.x + speed.x;
+            this.point.y = this.point.y + speed.y;
+          
+        }
+       
 
     }
 
@@ -411,8 +415,10 @@ class GridAlien {
         }
         this.speed = {
             x: 10,
-            y: 0
+            y:1 ///////
         }
+        this.width = 5 * 80;
+        this.height = 4 * 80;
         this.aliens = []
         for (let row = 0; row < 4; row++) {
             for (let col = 0; col < 5; col++) {
@@ -429,8 +435,20 @@ class GridAlien {
         
     }
     update() {
-        this.point.x += this.speed.x;
-        this.point.y += this.speed.y;
+        this.point.x = this.point.x + this.speed.x;
+        this.point.y = this.point.y + this.speed.y;
+        if (this.point.x + this.width >= canv.width) {
+            this.speed.x = -this.speed.x;
+        }
+        if (this.point.x + this.width <= 0) {
+            this.speed.x = -this.speed.x;
+        }
+        if (this.point.y + this.height >= canv.height * 0.75) {
+            this.speed.y = -this.speed.y;
+        }
+        if (this.point.y + this.height <= 0) {
+            this.speed.y = -this.speed.y;
+        }
 
     }
 }
