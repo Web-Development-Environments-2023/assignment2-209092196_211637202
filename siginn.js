@@ -4,6 +4,7 @@ var database = [
     password: 'testuser',
   },
 ];
+var background;
 var timeDown;
 var eTime;
 var startT;
@@ -232,6 +233,9 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 function startGame(time, shootKey) {
+  background = new Audio('sounds/spaceinvaders1.mpeg');
+  background.loop = true;
+  background.play();
   at_game = true;
   canv = document.getElementById('gameCanvas');
   ctx = canv.getContext('2d');
@@ -322,31 +326,25 @@ function startGame(time, shootKey) {
   timeDown = setInterval(updateTimer, 1000);
 }
 function scoretable() {
-  if (win == 0) {
-    const modal = document.getElementById('message');
-    const closeBtn = modal.querySelector('.close');
-    modal.style.display = 'block';
-    if (modal) {
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = 'none';
-        }
-      };
-    }
-    // var modalDialog = document.getElementById('message');
-    var modalContent = document.getElementById('tablescore');
-    // var closebtn = document.getElementsByClassName('close')[0];
-    modalContent.innerHTML = 'You Lost<br><br>';
+  const modal = document.getElementById('message');
+  const closeBtn = modal.querySelector('.close');
+  modal.style.display = 'block';
+  if (modal) {
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
+  }
+  // var modalDialog = document.getElementById('message');
+  var modalContent = document.getElementById('tablescore');
+  // var closebtn = document.getElementsByClassName('close')[0];
+  modalContent.innerHTML = message;
 
-    for (var i = 0; i < scoreTable.length; i++) {
-      var scoreElement = document.createElement('p');
-      scoreElement.innerHTML = 'Score ' + (i + 1) + ': ' + scoreTable[i];
-      modalContent.appendChild(scoreElement);
-    }
-  } else if (win == 1) {
-    // bette
-  } else {
-    // champ
+  for (var i = 0; i < scoreTable.length; i++) {
+    var scoreElement = document.createElement('p');
+    scoreElement.innerHTML = 'Score ' + (i + 1) + ': ' + scoreTable[i];
+    modalContent.appendChild(scoreElement);
   }
 }
 function animate() {
@@ -355,12 +353,16 @@ function animate() {
     return;
   }
 
+  console.log(aliensGrid[0].length);
+
   if (triesLeft <= 0) {
     win = 0;
     message = 'You Lost!';
     scoreTable.push(score);
     scoreTable.sort((first, sec) => sec - first);
     at_game = false;
+    background.pause();
+    score = 0;
     scoretable();
     return;
   }
@@ -370,16 +372,31 @@ function animate() {
     scoreTable.push(score);
     scoreTable.sort((first, sec) => sec - first);
     at_game = false;
+    background.pause();
+    score = 0;
     scoretable();
     return;
   }
-  if (aliensGrid[0].length <= 0 && eTime >= 0) {
+  if (eTime == 0 && score >= 100) {
     win = 2;
+    message = 'Winner!';
+    scoreTable.push(score);
+    scoreTable.sort((first, sec) => sec - first);
+    at_game = false;
+    background.pause();
+    scoretable();
+    score = 0;
+    return;
+  }
+  if (score >= 285) {
+    win = 3;
     message = 'Champion!';
     scoreTable.push(score);
     scoreTable.sort((first, sec) => sec - first);
     at_game = false;
+    background.pause();
     scoretable();
+    score = 0;
     return;
   }
 
@@ -678,6 +695,7 @@ function newgame() {
   aliensGrid.length = 0;
   frames = 0;
   at_game = false;
+  background.pause();
   //   canv = document.getElementById('gameCanvas');
   //   ctx = canv.getContext('2d');
 
