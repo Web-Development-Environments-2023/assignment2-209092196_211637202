@@ -18,6 +18,7 @@ var player;
 var space = new Image();
 space.src = 'images/canvasec.jpg';
 var missles = [];
+var aliensGrid = []
 const keys = {
     ArrowUp: {
         pressed: false
@@ -226,10 +227,11 @@ function startGame(time, shootKey) {
     }
     player = new Invader();
     player.draw();
+    aliensGrid.push(new GridAlien());
     window.addEventListener('keydown', ({ key }) => {
         switch (key) {
             case 'ArrowUp':
-                if (player.point.y - 10 > 0.4 * canv.height ) {
+                if (player.point.y - 10 > canv.height - 0.4 * canv.height ) {
                     player.point.y = player.point.y - 10;
                     keys.ArrowUp.pressed = true;
                 }
@@ -272,7 +274,7 @@ function startGame(time, shootKey) {
     window.addEventListener('keyup', ({ key }) => {
         switch (key) {
             case 'ArrowUp':
-                if (player.point.y - 10 > 0.4 * canv.height) {
+                if (player.point.y - 10 > canv.height - 0.4 * canv.height) {
                     player.point.y = player.point.y - 10;
                     keys.ArrowUp.pressed = false;
                 }             
@@ -309,8 +311,24 @@ function animate() {
     ctx.drawImage(space, 0, 0, canv.width, canv.height);
     player.draw();
     missles.forEach(missle => {
-        missle.update();
+        missle.update();// dlete out of frame!!!!!!!!!!
+         
+
     });
+    aliensGrid.forEach((grid) => {
+        grid.update()
+        grid.aliens.forEach(ali => {
+            ali.update({ speed: grid.speed });
+        })
+    })
+    //missles.forEach((missle, out) => {
+    //    if (missle.point.y - missle.raduis >= 0) {
+    //        missles.splice(out, 1)
+    //    } else {
+    //        missle.update();
+    //    }
+        
+    //});
 
 }
 
@@ -358,5 +376,61 @@ class Missle {
         ctx.closePath();
         this.point.x = this.point.x + this.speed.x;
         this.point.y = this.point.y + this.speed.y;
+    }
+}
+class Alien {
+    constructor({ point }) {
+        this.point = point;
+        this.platerimg = new Image();
+        this.platerimg.src = 'images/enmey2.png';
+        this.platerimg.onload = () => {
+            this.width = this.platerimg.width *0.2 ;
+            this.height = this.platerimg.height *0.2;
+           
+        };
+        this.speed = {
+            x: 0,
+            y:0
+        }
+
+    }
+
+    update({ speed }) {
+        this.x += speed.x;
+        this.y += speed.y;
+        ctx.drawImage(this.platerimg, this.point.x, this.point.y, this.width, this.height);
+
+    }
+
+}
+class GridAlien {
+    constructor() {
+        this.point = {
+            x: 0,
+            y: 0
+        }
+        this.speed = {
+            x: 10,
+            y: 0
+        }
+        this.aliens = []
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 5; col++) {
+                this.aliens.push(new Alien({
+                    point: {
+                        x: col * 80,
+                        y: row * 80
+                    }
+                }));
+
+            }
+        }
+        
+        
+    }
+    update() {
+        this.point.x += this.speed.x;
+        this.point.y += this.speed.y;
+
     }
 }
