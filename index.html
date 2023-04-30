@@ -26,12 +26,20 @@
                     </li>
                     <li>
                         <button id="aboutbtn" onclick="about()">About</button>
-                        <div id="modalid" class="modal">
+                        <dialog id="modalid" class="modal">
                             <div id="modalcontent" class="modal-content">
                                 <span class="close">&times;</span>
-                                <p>We need to fill in here!!!1</p>
+                                <p style="color: aliceblue">
+                                    We rahaf sabih and jan zaatra designed this game using a Template (mix of html javascripy and css).
+                                    <br />
+                                    <br />
+                                    difficulties: Creating visually appealing graphics and animations that fit with the game's theme can
+                                    take a lot of time and effort which is a problem we have faced in this assignment.
+                                    <br />
+                                </p>
                             </div>
-                        </div>
+                        </dialog>
+
                     </li>
                     <li>
                         <button id="loginBtn" onclick="login_screen()">logIn</button>
@@ -111,8 +119,29 @@
 
         </div>
         <div class="screen" id="game_scr" style="display:none;">
+            <div id="adds_on" style="position: absolute; background: transparent; z-index: 2; top: 50px; left: 10px">
+                <label id="score" style="color: brown"></label>
+                <br />
+                <br />
+                <br />
+                <label id="lives" style="color: brown"></label>
+                <br />
+                <br />
+                <br />
+                <label id="time_remaining" style="color: brown"></label>
+            </div>
+            <div style="position: absolute; top: 50px; right: 25px; z-index: 2">
+                <button id="new_game" onclick="newgame()">New Game</button>
+            </div>
+
+            <div id="message" class="modal">
+                <div id="modalcontent" class="modal-content" style="display:none">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+
             <canvas id="gameCanvas"> </canvas>
-           
+
 
         </div>
         <div class="screen" id="config_scr" style="display:none;">

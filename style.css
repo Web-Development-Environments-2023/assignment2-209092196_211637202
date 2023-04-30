@@ -100,6 +100,7 @@ p {
     font-family: 'Bangers', cursive;
 }
 
+
 #modalid {
     display: none;
     position: fixed;
@@ -114,14 +115,15 @@ p {
 #modalcontent {
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #051c3c;
+    border: 10px solid #0e4ca3;
     width: 60%;
     height: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.853);
     color: white;
     font-weight: bold;
     font-family: 'Bangers', cursive;
 }
+
 
 .close {
     color: #ffd300;
@@ -193,3 +195,20 @@ label {
 #gameCanvas {
     position: absolute;
 }
+#new_game {
+    background-image: linear-gradient(to bottom, #4286f4, #2b5dd1);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #new_game:hover {
+        background-image: linear-gradient(to bottom, #2b5dd1, #4286f4);
+    }
